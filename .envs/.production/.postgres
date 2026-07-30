@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=biblioapi
+POSTGRES_USER=jJbPhUZBkQTbQqsPkUmHLThGPJnZpDIN
+POSTGRES_PASSWORD=q13eNQAcf2Advr4rwUApTuyGX2uKtuOrqoDjEnLQYAPClygUpVWb7o8UksO5AV0U

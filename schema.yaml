@@ -1,0 +1,823 @@
+openapi: 3.0.3
+info:
+  title: BiblioAPI API
+  version: 1.0.0
+  description: Documentation of API endpoints of BiblioAPI
+paths:
+  /api/emprunts/:
+    get:
+      operationId: emprunts_list
+      tags:
+      - emprunts
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Emprunt'
+          description: ''
+    post:
+      operationId: emprunts_create
+      tags:
+      - emprunts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprunt'
+          description: ''
+  /api/emprunts/{id}/:
+    get:
+      operationId: emprunts_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Emprunt.
+        required: true
+      tags:
+      - emprunts
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprunt'
+          description: ''
+    put:
+      operationId: emprunts_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Emprunt.
+        required: true
+      tags:
+      - emprunts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprunt'
+          description: ''
+    patch:
+      operationId: emprunts_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Emprunt.
+        required: true
+      tags:
+      - emprunts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmprunt'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmprunt'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmprunt'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprunt'
+          description: ''
+    delete:
+      operationId: emprunts_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Emprunt.
+        required: true
+      tags:
+      - emprunts
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/emprunts/{id}/retourner/:
+    post:
+      operationId: emprunts_retourner_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Emprunt.
+        required: true
+      tags:
+      - emprunts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Emprunt'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprunt'
+          description: ''
+  /api/inscription/:
+    post:
+      operationId: inscription_create
+      tags:
+      - inscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inscription'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Inscription'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Inscription'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inscription'
+          description: ''
+  /api/livres/:
+    get:
+      operationId: livres_list
+      tags:
+      - livres
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Livre'
+          description: ''
+    post:
+      operationId: livres_create
+      tags:
+      - livres
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Livre'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+  /api/livres/{id}/:
+    get:
+      operationId: livres_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Livre.
+        required: true
+      tags:
+      - livres
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    put:
+      operationId: livres_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Livre.
+        required: true
+      tags:
+      - livres
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Livre'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    patch:
+      operationId: livres_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Livre.
+        required: true
+      tags:
+      - livres
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    delete:
+      operationId: livres_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Livre.
+        required: true
+      tags:
+      - livres
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/moi/:
+    get:
+      operationId: moi_retrieve
+      summary: Profil de l'utilisateur connecté
+      tags:
+      - moi
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoiResponse'
+          description: ''
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - ht
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/token/:
+    post:
+      operationId: token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+components:
+  schemas:
+    Emprunt:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        livre:
+          allOf:
+          - $ref: '#/components/schemas/Livre'
+          readOnly: true
+        livre_id:
+          type: integer
+          writeOnly: true
+        utilisateur:
+          type: string
+          readOnly: true
+        date_emprunt:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date d'emprunt
+        date_retour_prevue:
+          type: string
+          format: date
+          title: Date de retour prévue
+        date_retour_reelle:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Date de retour réelle
+        statut:
+          allOf:
+          - $ref: '#/components/schemas/StatutEnum'
+          readOnly: true
+      required:
+      - date_emprunt
+      - date_retour_prevue
+      - date_retour_reelle
+      - id
+      - livre
+      - livre_id
+      - statut
+      - utilisateur
+    Inscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        name:
+          type: string
+          title: Name of User
+          maxLength: 255
+        password:
+          type: string
+          writeOnly: true
+          minLength: 8
+        role:
+          allOf:
+          - $ref: '#/components/schemas/RoleEnum'
+          title: Rôle
+      required:
+      - email
+      - id
+      - password
+    Livre:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titre:
+          type: string
+          maxLength: 255
+        auteur:
+          type: string
+          maxLength: 255
+        isbn:
+          type: string
+          maxLength: 13
+        nombre_exemplaires:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Nombre d'exemplaires
+        nombre_exemplaires_disponibles:
+          type: integer
+          readOnly: true
+          title: Exemplaires disponibles
+        disponible:
+          type: boolean
+          readOnly: true
+      required:
+      - auteur
+      - disponible
+      - id
+      - isbn
+      - nombre_exemplaires_disponibles
+      - titre
+    MoiResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+      required:
+      - email
+      - id
+      - role
+      - username
+    PatchedEmprunt:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        livre:
+          allOf:
+          - $ref: '#/components/schemas/Livre'
+          readOnly: true
+        livre_id:
+          type: integer
+          writeOnly: true
+        utilisateur:
+          type: string
+          readOnly: true
+        date_emprunt:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date d'emprunt
+        date_retour_prevue:
+          type: string
+          format: date
+          title: Date de retour prévue
+        date_retour_reelle:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Date de retour réelle
+        statut:
+          allOf:
+          - $ref: '#/components/schemas/StatutEnum'
+          readOnly: true
+    PatchedLivre:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titre:
+          type: string
+          maxLength: 255
+        auteur:
+          type: string
+          maxLength: 255
+        isbn:
+          type: string
+          maxLength: 13
+        nombre_exemplaires:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Nombre d'exemplaires
+        nombre_exemplaires_disponibles:
+          type: integer
+          readOnly: true
+          title: Exemplaires disponibles
+        disponible:
+          type: boolean
+          readOnly: true
+    RoleEnum:
+      enum:
+      - lecteur
+      - bibliothecaire
+      type: string
+      description: |-
+        * `lecteur` - Lecteur
+        * `bibliothecaire` - Bibliothécaire
+    StatutEnum:
+      enum:
+      - en_cours
+      - retourne
+      - en_retard
+      type: string
+      description: |-
+        * `en_cours` - En cours
+        * `retourne` - Retourné
+        * `en_retard` - En retard
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
